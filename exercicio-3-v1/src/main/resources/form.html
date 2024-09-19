@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<title>Controle de Estoque</title>
+<script type="text/javascript">
+function addIdToPath(form_name, base_url) {
+    var your_form = document.getElementById(form_name);
+    var id = your_form.elements.namedItem("id").value;
+    action_src = base_url + id;
+    your_form.action = action_src;
+}
+</script>
+</head>
+<body>
+<p>
+    <h1>Controle de Estoque da Raquel</h1>
+</p>
+
+<section class="section--container_responsive">
+    <section class="section--mainrow_responsive first--section">
+        <h1 class="generaltext">Inserir Produto</h1>
+        <form class="form--register" action="http://localhost:6789/produto/insert" method="post" id="form-add">
+            <p>Descricao:</p>
+            <input class="input--register" type="text" name="descricao" value="" placeholder="suco, chiclete..">
+            <p>Preco:</p>
+            <input class="input--register" type="text" name="preco" value="">
+            <p>Quantidade:</p>
+            <input class="input--register" type="text" name="quantidade" value="">
+            <p>Data de fabricacao:</p>
+            <input class="input--register" type="text" name="dataFabricacao" value="" placeholder="2024-09-19T12:00:00">
+            <p>Data de validade:</p>
+            <input class="input--register" type="text" name="dataValidade" value="" placeholder="2024-09-19">
+            <input type="submit" value="cadastrar" class="input--main_style input--button">
+        </form>
+    </section>
+    <section class="section--row_responsive">
+        <h1 class="generaltext">Detalhar Produto</h1>
+        <form class="form--register" onsubmit="addIdToPath('form-detail', 'http://localhost:6789/produto/detail/');" method="get" id="form-detail">
+            <p>ID do Produto:</p>
+            <input class="input--register" type="text" name="id" value="">
+            <input type="submit" value="Consultar" class="input--main_style input--button">
+        </form>
+    </section>
+    <section class="section--row_responsive">
+        <h1 class="generaltext">Remover Produto</h1>
+        <form class="form--register" onsubmit="addIdToPath('form-remove', 'http://localhost:6789/produto/remove/');" method="post" id="form-remove">
+            <p>ID do Produto:</p>
+            <input class="input--register" type="text" name="id" value="">
+            <input type="submit" value="Remover" class="input--main_style input--button">
+        </form>
+    </section>
+    <section class="section--row_responsive">
+        <h1 class="generaltext">Listar Todos os Produtos</h1>
+        <form class="form--register" action="http://localhost:6789/produto/list" method="get">
+            <input type="submit" value="Listar todos" class="input--main_style input--button">
+        </form>
+    </section>
+</section>
+</body>
+</html>
